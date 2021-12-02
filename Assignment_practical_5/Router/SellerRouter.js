@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const SellerModal = require('../Modal/SellerModal')
+const ProductModal = require('../Modal/ProductModal')
 mongoose.connect(process.env.MONGOOES_URL).then(()=>console.log("connected "));
 router.use(express.json());
 router.post('/',(req,res)=>{
-    return res.json({data:'Seller Page ...'})
+    return res.json({data:'Product Page ...'})
 });
-router.post('/AddSeller',(req,res)=>{
+router.post('/AddProducts',(req,res)=>{
     const record = req.body;
-    SellerModal.create(record)
-    return res.json({data:'Seller  Data Add Sucessfully .....'})
+    ProductModal.create(record)
+    return res.json({data:'Product Data Add Sucessfully .....'})
 });
 module.exports = router;
