@@ -10,6 +10,6 @@ router.post('/',(req,res)=>{
 router.post('/AddProducts',(req,res)=>{
     const {data} = req.body;
     ProductModal.create(data)
-    return res.json({data:'Product Data Add Sucessfully  ...'})
+    return res.json({data:'Product Data Add Sucessfully .....'})
 });
 module.exports = router;

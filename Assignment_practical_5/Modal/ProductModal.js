@@ -1,5 +1,5 @@
 const mongose = require('mongoose');
-const ProductShema = mongose.Schema({
+const ProductSchema = mongose.Schema({
     ProductId:String,
     Title:String,
     Price:String,
@@ -7,5 +7,5 @@ const ProductShema = mongose.Schema({
     CompanyId:String,
     SellerId:[String],
 });
-const ProductModal = mongose.model("Products",ProductShema,"Product")
+const ProductModal = mongose.model("assignment5",ProductShema,"Product")
 module.exports = ProductModal;
