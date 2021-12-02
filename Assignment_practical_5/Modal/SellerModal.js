@@ -4,5 +4,5 @@ const SellerSchema = mongose.Schema({
     Name:String,
     ProductId:[{type:String}],
 });
-const SellerModal = mongose.model("assignmnet5",SellerSchema,"Seller")
+const SellerModal = mongose.model("Seller",SellerSchema,"Seller")
 module.exports = SellerModal;

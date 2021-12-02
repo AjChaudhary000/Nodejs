@@ -4,5 +4,5 @@ const CompanySchema = mongose.Schema({
     Name:String,
     ProductId:[{type:String}]
 });
-const CompanyModal = mongose.model("Product",CompanySchema,"Comapnay")
+const CompanyModal = mongose.model("Comapnay",CompanySchema,"Comapnay")
 module.exports = CompanyModal;
