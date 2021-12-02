@@ -3,9 +3,9 @@ const ProductSchema = mongose.Schema({
     ProductId:String,
     Title:String,
     Price:String,
-     Category:[{type:String}],
+    Category:[{type:String}],
     CompanyId:String,
-     SellerId:[{type:String}],
+    SellerId:[{type:String}],
 });
 const ProductModal = mongose.model("assignment5",ProductSchema,"Product")
 module.exports = ProductModal;
