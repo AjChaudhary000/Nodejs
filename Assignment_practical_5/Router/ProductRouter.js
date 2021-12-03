@@ -30,7 +30,11 @@ router.put('/UptProducts/:ProductId',async(req,res)=>{
 });
 router.delete('/DelProduct/:ProductId',async(req,res)=>{
   const id = req.params.ProductId;
-    const del = await ProductModal.findOneAndDelete({ProductId:id});
+    const del = await ProductModal.findOneAndDelete({ProductId:id},(e)=>{
+      if(e){
+        console.log("expection ..",e)
+      }
+    });
     return res.json({data:'Product Data delete Sucessfully .....'})
 });
 module.exports = router;
