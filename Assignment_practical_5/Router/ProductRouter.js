@@ -28,4 +28,9 @@ router.put('/UptProducts/:ProductId',async(req,res)=>{
    const update =await ProductModal.findOneAndUpdate({ProductId:id},data,{new:true})
     return res.json({data:'Product Data Update Sucessfully .....'})
 });
+router.delete('/DelProduct/:ProductId',async(req,res)=>{
+  const id = req.params.ProductId;
+    const del = await ProductModal.findOneAndDelete({ProductId:id});
+    return res.json({data:'Product Data delete Sucessfully .....'})
+});
 module.exports = router;
