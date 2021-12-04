@@ -11,9 +11,25 @@ router.post('/AddCompany',(req,res)=>{
     CompanyModal.create(record)
     return res.json({data:'Companys  Data Add Sucessfully .....'})
 });
-router.delete('/DltCompany/:Name',(req,res)=>{
-    const cmp = req.params.Name;
-    const deletecmp = CompanyModal.findOneAndDelete({Name: cmp});
-    return res.json({data:'Companys  Data Add Sucessfully .....'+deletecmp});
+router.get('/Display',async(req,res)=>{
+    const dt = await CompanyModal.find();
+    return res.json({data:dt})
+});
+router.put('/UptCompany/:CompanyId',async(req,res)=>{
+  const id = req.params.CompanyId;
+    
+    const data = req.body;
+    console.log(data)
+   const update =await CompanyModal.findOneAndUpdate({CompanyId:id},data,{new:true})
+    return res.json({data:'Company Data Update Sucessfully .....'})
+});
+router.delete('/DelCompany/:CompanyId',async(req,res)=>{
+  const id = req.params.CompanyId;
+    const del = await CompanyModal.findOneAndDelete({CompanyId:id},(e)=>{
+      if(e){
+        console.log(e)
+      }
+    });
+    return res.json({data:'Company Data delete Sucessfully .....'})
 });
 module.exports = router;
