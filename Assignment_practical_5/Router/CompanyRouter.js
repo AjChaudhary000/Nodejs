@@ -10,7 +10,7 @@ router.post('/',(req,res)=>{
 router.post('/AddCompany',(req,res)=>{
     const record = req.body;
     CompanyModal.create(record)
-    return res.json({data:'Companys  Data Add Sucessfully .....'})
+    return res.json({data:'Company  Data Add Sucessfully .....'})
 });
 router.get('/Display/AllProduct/:Name',async(req,res)=>{
   const name =  req.params.Name;
