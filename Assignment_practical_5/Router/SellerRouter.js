@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const SellerModal = require('../Modal/SellerModal')
+const ProductModal = require('../Modal/ProductModal')
 // mongoose.connect(process.env.MONGOOES_URL).then(()=>console.log("connected "));
 router.use(express.json());
 router.post('/',(req,res)=>{
@@ -12,9 +13,11 @@ router.post('/AddSeller',(req,res)=>{
     SellerModal.create(record)
     return res.json({data:'Seller Data Add Sucessfully .....'})
 });
-router.get('/Display',async(req,res)=>{
-    const dt = await SellerModal.find();
-    return res.json({data:dt})
+router.get('/Display/AllProduct/:Name',async(req,res)=>{
+  const name =  req.params.Name;
+    const dt = await SellerModal.find({Name:name});
+    const list = await ProductModal.find({ProductId:dt[0].ProductId});
+    return res.json({data:list})
 });
 router.put('/UptSeller/:SellerId',async(req,res)=>{
   const id = req.params.SellerId;

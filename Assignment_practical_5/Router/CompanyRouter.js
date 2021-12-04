@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const CompanyModal = require('../Modal/CompanyModal')
+const ProductModal = require('../Modal/ProductModal')
 router.use(express.json());
 router.post('/',(req,res)=>{
     return res.json({data:'Company Page ...'})
@@ -11,9 +12,11 @@ router.post('/AddCompany',(req,res)=>{
     CompanyModal.create(record)
     return res.json({data:'Companys  Data Add Sucessfully .....'})
 });
-router.get('/Display',async(req,res)=>{
-    const dt = await CompanyModal.find();
-    return res.json({data:dt})
+router.get('/Display/AllProduct/:Name',async(req,res)=>{
+  const name =  req.params.Name;
+    const dt = await CompanyModal.find({Name:name});
+    const list = await ProductModal.find({ProductId:dt[0].ProductId});
+    return res.json({data:list})
 });
 router.put('/UptCompany/:CompanyId',async(req,res)=>{
   const id = req.params.CompanyId;
